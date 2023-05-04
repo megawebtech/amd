@@ -1,0 +1,28 @@
+---
+
+- hosts: fedora
+  become: true
+  tasks:
+
+  - name: install nginx
+    dnf:
+      name: nginx
+      state: absent
+
+#  - name: restart nginx
+#    service:
+#      name: nginx
+#      state: restarted
+
+  - name: install unzip
+    package:
+      name: unzip
+
+  - name: install neofetch package
+    dnf:
+      name: neofetch
+
+  - name: copy default.html file to fedora desktop
+    copy:
+      src: default.html
+      dest: /var/www/html/index.html
