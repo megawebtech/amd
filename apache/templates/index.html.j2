@@ -1,0 +1,14 @@
+<html>
+<head>
+<title>ansible roles</title>
+</head>
+<body>
+<p style="align: center; color: red;">
+<h1>About desktop: <br>ip address: {{ ansible_facts.all_ipv4_addresses[0] }}
+<br>Quantity of CPU: {{ ansible_facts.processor_count }}
+<br> RAM: {{ ansible_facts.memtotal_mb }} MB
+
+ </h1>
+</p>
+</body>
+</html>

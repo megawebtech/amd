@@ -1,0 +1,10 @@
+---
+
+- name: install nginx
+  hosts: mint
+  become: true
+  tasks:
+
+  - name: install neofetch
+    apt:
+      name: neofetch

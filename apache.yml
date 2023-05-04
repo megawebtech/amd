@@ -1,0 +1,8 @@
+---
+
+- name: install apache 
+  hosts: mint
+  become: true
+  roles:
+    - apache
+

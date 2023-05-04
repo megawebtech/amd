@@ -1,0 +1,35 @@
+---
+
+- name: create folder
+  hosts: mint
+  become: true
+  gather_facts: true
+  tasks:
+
+  - name: Create folder
+    file:
+      path: /tmp/newfolder
+      state: directory
+ 
+- name: load file
+  hosts: mint
+  become: true
+  tasks:
+
+  - name: downloadfile
+    get_url:
+      url: "https://downloads.apache.org/kafka/3.4.0/kafka-3.4.0-src.tgz"
+      dest: /tmp/newfolder/
+    register: download_status
+
+- name: unzip archive
+  hosts: mint
+  become: true
+  tasks:
+
+  - name: unzip archive
+    unarchive:
+      src: "/tmp/newfolder/kafka-3.4.0-src.tgz"
+      dest: /tmp/newfolder
+#      remote_src: yes
+      copy: no
