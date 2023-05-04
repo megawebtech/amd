@@ -4,6 +4,19 @@
   become: true
   tasks:
 
-  - name: install apache2 package
-    apt:
-      name: apache2
+#  - name: download kafka-3.3.2-src
+#    uri:
+#      url: https://downloads.apache.org/kafka/3.3.2/kafka-3.3.2-src.tgz
+#      dest: /tmp/
+
+  - name: create directory
+    file:
+      path: "kafka"
+      state: directory
+      owner: oem
+      group: oem
+      mode: 0755
+    loop:
+      - "/tmp/temp1"
+      - "/tmp/temp2"
+
