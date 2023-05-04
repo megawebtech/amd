@@ -40,3 +40,14 @@
   systemd:
     name: apache2
     enabled: yes
+
+- name: check if web page is reachable
+  uri:
+    url: "http://{{ ansible_facts.all_ipv4_addresses[0] }}"
+    method: GET
+    return_content: no
+  register: response
+
+- name: print http status
+  debug:
+    var: response.status
