@@ -1,0 +1,22 @@
+---
+
+- name: install tuned
+  hosts: fedora
+  become: true
+  tasks:
+
+  - name: download tuned
+    dnf:
+      name: tuned
+      state: latest
+      
+  - name: start tuned as demon
+    service:
+      name: tuned
+      state: started
+
+  - name: add tuned into auto start
+    become: true
+    systemd:
+      name: tuned
+      enabled: yes

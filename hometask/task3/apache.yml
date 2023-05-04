@@ -1,0 +1,8 @@
+---
+
+- name: change system greeting
+  hosts: fedora
+  become: true
+  roles:
+    - apache
+
